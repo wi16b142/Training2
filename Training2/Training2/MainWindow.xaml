@@ -1,0 +1,50 @@
+﻿<Window x:Class="Training2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Training2"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Registered Users:" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Label Content="Chat History" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Label Content="Messages from user" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Content="Start Receiving" Command="{Binding ReceiveBtnClick}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"/>
+
+        <DataGrid ItemsSource="{Binding Users}" Grid.Row="1" Margin="5" HeadersVisibility="none" AutoGenerateColumns="False" SelectedItem="{Binding SelectedUser}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="100*" Binding="{Binding}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid ItemsSource="{Binding History}" Grid.Row="1" Grid.Column="1" Margin="5" AutoGenerateColumns="False" HeadersVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="30*" Binding="{Binding Username}"/>
+                <DataGridTextColumn Width="60*" Binding="{Binding Message}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TextBox Text="{Binding SelectedUser}" TextAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="5,5" IsReadOnly="True" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"/>
+        <DataGrid Margin="5,40,5,5" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding SelectedHistory}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Message}" Width="70*" Header="Message"/>
+                <DataGridTextColumn Binding="{Binding Timestamp}" Width="30*" Header="Time"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>
