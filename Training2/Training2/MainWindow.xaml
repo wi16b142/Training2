@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Training2"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Example2 by Sascha Böck" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
